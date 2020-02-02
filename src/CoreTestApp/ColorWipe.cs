@@ -35,7 +35,8 @@ namespace CoreTestApp
             foreach (var led in controller.LEDs)
             {
                 led.Color = color;
-                device.Render();
+                device.Render(true); // by manipulating the LED directly instead of using the controller, the IsDirty state is lost.
+                                     // nothing will get rendered
 
                 // wait for a minimum of 5 milliseconds
                 var waitPeriod = (int)Math.Max(500.0 / controller.LEDCount, 5.0); 
